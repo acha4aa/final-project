@@ -42,13 +42,13 @@ const DetailView = () => {
 
   return (
     <div className="container mx-auto my-10 bg-slate-50 dark:bg-stone-900 p-5 rounded-lg shadow">
-      <h1 className="text-3xl font-bold mb-4">{movie.title}</h1>
+      <h1 className="text-3xl font-bold mb-4">{movie?.title}</h1>
       <img
-        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        alt={movie.title}
+        src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+        alt={movie?.title}
         className="w-full h-80 object-cover rounded-lg"
       />
-      <p className="mt-4">{movie.overview}</p>
+      <p className="mt-4">{movie?.overview}</p>
       <button onClick={() => navigate(-1)} className="btn btn-primary mt-4">
         Back to List
       </button>

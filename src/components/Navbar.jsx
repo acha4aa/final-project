@@ -1,16 +1,33 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { toogleTheme } from "./store/action/themeAction";
 import ThemeContext from "./context/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
+const API_KEY = "b86de826f395db3752ee75980abfa448"; // Replace with your actual TMDB API key
 
 export const Navbar = () => {
   const [getTheme, setTheme] = useContext(ThemeContext);
+  const [data, setData] = useState([]);
+  const [cari, setCari] = useState("");
   const root = window.document.documentElement;
   const theme = useSelector((state) => state.theme.theme);
   const dispatchRedux = useDispatch();
-  console.log(theme);
 
-  console.log(getTheme);
+  const search = useCallback(
+    async (cari) => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/search/movie?query=${cari}&api_key=${API_KEY}`
+        );
+        setData(response.data.results);
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+    [cari]
+  );
 
   const handleTheme = () => {
     if (getTheme == "light") {
@@ -23,6 +40,10 @@ export const Navbar = () => {
       root.classList.add("light");
     }
   };
+
+  useEffect(() => {
+    search(cari);
+  }, [cari]);
 
   return (
     <div className="sticky top-0 z-10 navbar bg-white text-black dark:text-white dark:bg-black bg-opacity-45 backdrop-blur rounded-box shadow">
@@ -64,7 +85,12 @@ export const Navbar = () => {
         <a className="btn btn-ghost text-xl">mOviEZze</a>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle">
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+        <button
+          onClick={() => document.getElementById("my_modal_1").showModal()}
+          className="btn btn-ghost btn-circle"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -80,6 +106,46 @@ export const Navbar = () => {
             />
           </svg>
         </button>
+
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box text-white">
+            <label className="input input-bordered flex items-center gap-2">
+              <input
+                type="text"
+                className="grow"
+                onChange={(e) => setCari(e.target.value)}
+                placeholder="Search"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                className="h-4 w-4 opacity-70"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </label>
+            <div className="flex flex-col space-y-4 pt-3">
+              {data.map((item, index) => {
+                return (
+                  <Link to={`/details/${item.id}`}>
+                    <div
+                      className="flex flex-col p-4 border-[1px] border-gray-500 rounded-xl"
+                      key={index}
+                    >
+                      <h2>{item.title}</h2>
+                      <p className="line-clamp-2">{item.overview}</p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </dialog>
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">
             <svg
