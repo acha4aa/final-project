@@ -11,9 +11,10 @@ import store from "./components/store/store";
 import Detail from "./pages/DetailView";
 import Kategori from "./pages/kategori/KategoriView";
 import CategoriMovies from "./components/CategoriMovies";
+import Rating from "./pages/ratings/Rating";
+import Favorite from "./pages/favorites/Favorite";
 
 function App() {
-  const [count, setCount] = useState(0);
   const theme = useState("light");
 
   return (
@@ -27,6 +28,8 @@ function App() {
               <Route path="/details/:id" element={<Detail />} />
               <Route path="/kategori" element={<Kategori />} />
               <Route path="/kategori/:id" element={<CategoriMovies />} />
+              <Route path="/ratings" element={<Rating />} />
+              <Route path="/favorites" element={<Favorite />} />
             </Routes>
           </Provider>
         </ThemeContext.Provider>

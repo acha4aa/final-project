@@ -52,9 +52,9 @@ const CardCarousel = ({ data, heading }) => (
   </div>
 );
 
-import { Link } from 'react-router-dom'; // Tambahkan ini di bagian atas file
+import { Link } from "react-router-dom"; // Tambahkan ini di bagian atas file
 
-const Card = ({ item }) => (
+export const Card = ({ item }) => (
   <div className="px-4">
     <Link to={`/details/${item.id}`}>
       <div className="dark:bg-stone-900 dark:text-white carousel-item h-[500px] w-[200px] bg-base-100 shadow-xl rounded-lg overflow-hidden hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out flex flex-col">
