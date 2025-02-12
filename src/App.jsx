@@ -9,10 +9,10 @@ import ThemeContext from "./components/context/ThemeContext";
 import { Provider } from "react-redux";
 import store from "./components/store/store";
 import Detail from "./pages/DetailView";
-import Kategori from "./pages/kategori/KategoriView";
 import CategoriMovies from "./components/CategoriMovies";
 import Rating from "./pages/ratings/Rating";
 import Favorite from "./pages/favorites/Favorite";
+import Kategori from "./pages/kategori/Kategori";
 
 function App() {
   const theme = useState("light");
@@ -26,9 +26,9 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePages />} />
               <Route path="/details/:id" element={<Detail />} />
-              <Route path="/kategori" element={<Kategori />} />
               <Route path="/kategori/:id" element={<CategoriMovies />} />
               <Route path="/ratings" element={<Rating />} />
+              <Route path="/kategori" element={<Kategori />} />
               <Route path="/favorites" element={<Favorite />} />
             </Routes>
           </Provider>

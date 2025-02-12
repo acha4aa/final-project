@@ -141,7 +141,7 @@ const DetailView = () => {
   }, []);
 
   return (
-    <div className="container flex justify-center items-center mx-auto my-10 bg-slate-50 dark:bg-stone-900 p-5 rounded-lg shadow">
+    <div className="container flex justify-center items-center mx-auto my-10 bg-slate-50 text-black dark:bg-stone-900 dark:text-white p-5 rounded-lg shadow">
       <div className="flex flex-col items-center mx-4">
         <h1 className="text-3xl font-bold mb-4">{movie?.title}</h1>
         <img

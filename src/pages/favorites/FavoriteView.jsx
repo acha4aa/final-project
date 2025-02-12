@@ -24,7 +24,7 @@ export default function FavoriteView({ data }) {
                           {item.overview}
                         </p>
                       </div>
-                      <button className="btn btn-primary mt-4 w-full">
+                      <button id="favorite" className="btn btn-primary mt-4 w-full">
                         View Details
                       </button>
                     </div>

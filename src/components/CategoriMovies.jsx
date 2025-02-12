@@ -34,7 +34,7 @@ const CategoriMovies = () => {
       {loading ? (
         <p className="text-white text-center">Loading...</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="Kategori" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {movies.map((movie) => (
             <div 
               key={movie.id} 

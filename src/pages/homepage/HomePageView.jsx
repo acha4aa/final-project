@@ -23,15 +23,17 @@ const HeroSection = () => (
     }}
   >
     <div className="hero-overlay bg-opacity-65"></div>
-    <div className="hero-content text-neutral-content text-left">
+    <div className="hero-content text-neutral-content text-center">
       <div className="max-w-md">
-        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+        <h1 className="mb-5 text-5xl font-bold">Hello everyone</h1>
         <p className="mb-5">
           Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
           excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
           id nisi.
         </p>
-        <button className="btn btn-primary">Get Started</button>
+        <button className="btn btn-primary bg-red-600 border border-red-600 text-white hover:bg-red-700 hover:border-red-700">
+          Get Started
+        </button>
       </div>
     </div>
   </div>
@@ -68,11 +70,13 @@ export const Card = ({ item }) => (
             <h3 className="text-lg line-clamp-1 font-semibold mb-2 text-center">
               {item.title}
             </h3>
-            <p className="text-gray-600 text-sm text-center truncate">
+            <p  className="text-gray-600 text-sm text-center truncate">
               {item.overview}
             </p>
           </div>
-          <button className="btn btn-primary mt-4 w-full">View Details</button>
+          <button id="popular" className="btn border-2 border-yellow-500 text-yellow-500 bg-transparent hover:bg-yellow-500 hover:text-white">
+            Get Started
+          </button>
         </div>
       </div>
     </Link>

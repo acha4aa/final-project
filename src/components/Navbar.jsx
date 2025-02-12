@@ -67,7 +67,7 @@ export const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm text-white dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm text-black dark:text-white dark:bg-black dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
               <Link to="/">Homepage</Link>
@@ -77,6 +77,9 @@ export const Navbar = () => {
             </li>
             <li>
               <Link to="/favorites">Favorit</Link>
+            </li>
+            <li>
+              <Link to="/kategori">genre</Link>
             </li>
           </ul>
         </div>
@@ -89,7 +92,7 @@ export const Navbar = () => {
 
         <button
           onClick={() => document.getElementById("my_modal_1").showModal()}
-          className="btn btn-ghost btn-circle"
+          className="btn btn-ghost btn-circle" id="toggleSearch"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -108,9 +111,13 @@ export const Navbar = () => {
         </button>
 
         <dialog id="my_modal_1" className="modal">
-          <div className="modal-box text-white">
-            <label className="input input-bordered flex items-center gap-2">
+          <div className="modal-box text-black">
+            <label
+              className="input input-bordered flex items-center gap-2"
+             
+            >
               <input
+                id="searchBox"
                 type="text"
                 className="grow"
                 onChange={(e) => setCari(e.target.value)}
@@ -146,7 +153,7 @@ export const Navbar = () => {
             </div>
           </div>
         </dialog>
-        <button className="btn btn-ghost btn-circle">
+        <button className="btn btn-ghost btn-circle"  >
           <div className="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"

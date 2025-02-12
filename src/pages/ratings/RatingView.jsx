@@ -4,7 +4,7 @@ export default function RatingView({ data }) {
   try {
     return (
       <div className="flex py-12 min-h-screen justify-center">
-        <div className="flex flex-col">
+        <div id="ratings" className="flex flex-col">
           <h2 className="font-bold text-2xl pb-8 text-center">Rated List</h2>
           <div className="grid grid-cols-4 gap-4">
             {data.map((item, index) => {
